@@ -1,0 +1,45 @@
+// VECTORS
+
+// Vectors have x, y, z components and is arranged like (x, y, z)
+
+// Moving the object 10 points in X axis
+transform.translate(10, 0, 0)
+
+// Vector from target and character
+
+Vector3 vector_;
+
+vector_ = target.position - character.position;
+
+// Putting object X into object Y's position (Instantaneous)
+
+vector_ = Y.position - X.position;
+X.transform.translate(vector_);
+
+// Also: X.position = Y.position;
+
+// "Moving" object X to object Y's position. Speed is 10 loops
+
+vector_ = Y.position - X.position;
+X.transform.translate(vector_/10);
+
+// Normalizing - turning the vector values into percentages, on the one-th degree
+// normalized_vector = vector_ / vector_.magnitude
+
+// Getting the distance between two points - Magnitude
+Vector3 directionBetweenXandY = X.transform.position - Y.transform.position;
+float distanceBetweenXandY = directionBetweenXandY.magnitude;
+// Also
+float distanceBetweenXandY = Vector.Distance(X.transform.position, Y. transform.position);
+
+// Angles
+// Instantaneously face the X object in Y object's position
+X.transform.LookAt(Y.position)
+
+// Move X's angle to slowly look at Y's position
+Vector3 direction = Y.transform.position - X.transform.position;
+float rotationSpeed = 3;
+X.transform.rotation = Quaternion.Slerp(X.transformation.rotation, direction, Time.deltaTime * rotationSpeed);
+
+// Getting the angle between X's facing and direction of Y with respect to X's position
+float angleOfRotation = Vector3.Angle(X.position.forward, direction);
